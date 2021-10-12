@@ -3,16 +3,16 @@ const { Lop } = require('../models');
 const ApiError = require('../utils/ApiError');
 
 /**
- * Create a user
- * @param {Object} userBody
- * @returns {Promise<User>}
+ * Create a class
+ * @param {Object} classBody
+ * @returns {Promise<Class>}
  */
-const createClass = async (userBody) => {
-  return Lop.create(userBody);
+const createClass = async (classBody) => {
+  return Lop.create(classBody);
 };
 
 /**
- * Query for users
+ * Query for classs
  * @param {Object} filter - Mongo filter
  * @param {Object} options - Query options
  * @param {string} [options.sortBy] - Sort option in the format: sortField:(desc|asc)
@@ -26,24 +26,24 @@ const queryClass = async (filter, options) => {
 };
 
 /**
- * Get user by id
+ * Get class by id
  * @param {ObjectId} id
- * @returns {Promise<User>}
+ * @returns {Promise<Class>}
  */
 const getClassById = async (id) => {
   return Lop.findById(id);
 };
 
 /**
- * Update user by id
+ * Update class by id
  * @param {ObjectId} classId
  * @param {Object} updateBody
- * @returns {Promise<User>}
+ * @returns {Promise<Class>}
  */
 const updateClassById = async (classId, updateBody) => {
   const lop = await getClassById(classId);
   if (!lop) {
-    throw new ApiError(httpStatus.NOT_FOUND, 'User not found');
+    throw new ApiError(httpStatus.NOT_FOUND, 'Class not found');
   }
   Object.assign(lop, updateBody);
   await lop.save();
@@ -51,14 +51,14 @@ const updateClassById = async (classId, updateBody) => {
 };
 
 /**
- * Delete user by id
+ * Delete class by id
  * @param {ObjectId} classId
- * @returns {Promise<User>}
+ * @returns {Promise<Class>}
  */
 const deleteClassById = async (classId) => {
   const lop = await getClassById(classId);
   if (!lop) {
-    throw new ApiError(httpStatus.NOT_FOUND, 'User not found');
+    throw new ApiError(httpStatus.NOT_FOUND, 'Class not found');
   }
   await lop.remove();
   return lop;
