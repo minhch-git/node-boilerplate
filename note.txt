@@ -1,0 +1,19 @@
+People: 
+    PID
+    PName:
+    Sex
+    DOB
+    Phone
+    Address
+
+Professional:
+    Degree
+    Experience
+
+Works For:
+    DateOfJoin
+    Salary
+Companies:
+    CID
+    CName
+    Address
